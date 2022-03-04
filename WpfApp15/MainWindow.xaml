@@ -1,0 +1,50 @@
+﻿<Window x:Class="WpfApp15.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp15" xmlns:viewmodels="clr-namespace:WpfApp15.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EditPrepodsVM}"
+        mc:Ignorable="d"
+        Title="БД Студенты и группы" d:Width="500" d:Height="400" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Справочники">
+
+                <MenuItem Header="Группы">
+                    <MenuItem Header="Создать группу" Command="{Binding CreateGroup}"/>
+                    <MenuItem Header="Список групп" Command="{Binding ViewGroups}"/>
+                </MenuItem>
+                
+                <MenuItem Header="Студенты">
+                    <MenuItem Header="Создать студента" Command="{Binding CreateStudent}"/>
+                    <MenuItem Header="Список студентов" Command="{Binding ViewStudents}"/>
+                </MenuItem>
+                
+                <MenuItem Header="Специальности">
+                    <MenuItem Header="Создать Специальность" Command="{Binding CreateSpecial}"/>
+                    <MenuItem Header="Список Специальностей" Command="{Binding ViewSpecials}"/>
+                </MenuItem>
+
+                <MenuItem Header="Кураторы">
+                    <MenuItem Header="Создать Куратора" Command="{Binding  CreateCurator}"/>
+                    <MenuItem Header="Список Куратора" Command="{Binding ViewCurator}"/>
+                </MenuItem>
+
+                <MenuItem Header="Преподаватели">
+                    <MenuItem Header="Создать Преподавателя" Command="{Binding  CreatePrepod}"/>
+                    <MenuItem Header="Список Преподавателей" Command="{Binding ViewPrepods}"/>
+                </MenuItem>
+                <MenuItem Header="Дисциплины">
+                    <MenuItem Header="Создать Дисциплину" Command="{Binding CreateGroup}"/>
+                    <MenuItem Header="Список Дисциплин" Command="{Binding ViewGroups}"/>
+                </MenuItem>
+
+            </MenuItem>
+        </Menu>
+        <Frame Content="{Binding CurrentPage}" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

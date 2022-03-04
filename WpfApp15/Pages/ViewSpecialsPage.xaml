@@ -1,0 +1,43 @@
+﻿<Page x:Class="WpfApp15.Pages.ViewSpecialsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:viewmodels="clr-namespace:WpfApp15.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ViewSpecialsVM}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ViewSpecialsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Specials}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Наименование"  DisplayMemberBinding="{Binding Title}"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="1" HorizontalAlignment="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Предыдущие" Command="{Binding ViewBack}"/>
+            <ListBox Grid.Column="1" MinWidth="200" MaxWidth="500" ItemsSource="{Binding PageIndexes}" SelectedItem="{Binding SelectedIndex}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Button Grid.Column="2" Content="Следующие" Command="{Binding ViewForward}"/>
+            <ComboBox Grid.Column="3" SelectedItem="{Binding ViewRowsCount}" ItemsSource="{Binding RowsCountVariants}" />
+        </Grid>
+    </Grid>
+</Page>
